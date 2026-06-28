@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxWelcome } from './nx-welcome';
-
+import { Boton } from '@proyecto-genshin/global-shared';
 @Component({
-  imports: [NxWelcome, RouterModule],
+  imports: [RouterModule, Boton],
   selector: 'app-root',
-  templateUrl: './app.html',
+  template: ` <lib-boton></lib-boton> `,
   styleUrl: './app.css',
 })
 export class App {

@@ -80,7 +80,10 @@
       "unitTestRunner": "jest"
     },
     "@nx/angular:component": {
-      "style": "css"
+      "style": "css",
+      "inlineTemplate": true,
+      "inlineStyle": true,
+      "skipTests": true
     }
   }
 }
