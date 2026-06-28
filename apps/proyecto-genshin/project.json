@@ -1,0 +1,90 @@
+{
+  "name": "proyecto-genshin",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/proyecto-genshin/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular/build:application",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/proyecto-genshin",
+        "browser": "apps/proyecto-genshin/src/main.ts",
+        "tsConfig": "apps/proyecto-genshin/tsconfig.app.json",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/proyecto-genshin/public"
+          }
+        ],
+        "styles": [
+          "apps/proyecto-genshin/src/styles.css"
+        ],
+        "server": "apps/proyecto-genshin/src/main.server.ts",
+        "ssr": {
+          "entry": "apps/proyecto-genshin/src/server.ts"
+        },
+        "outputMode": "server"
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kb",
+              "maximumError": "8kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      }
+    },
+    "serve": {
+      "continuous": true,
+      "executor": "@angular/build:dev-server",
+      "defaultConfiguration": "development",
+      "configurations": {
+        "production": {
+          "buildTarget": "proyecto-genshin:build:production"
+        },
+        "development": {
+          "buildTarget": "proyecto-genshin:build:development"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@angular/build:unit-test",
+      "options": {
+        "watch": false
+      }
+    },
+    "serve-static": {
+      "continuous": true,
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "proyecto-genshin:build",
+        "port": 4200,
+        "staticFilePath": "dist/apps/proyecto-genshin/browser",
+        "spa": true
+      }
+    }
+  }
+}
