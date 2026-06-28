@@ -1,9 +1,9 @@
 {
-  "name": "proyecto-genshin",
+  "name": "proyecto-genshin-desktop",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "app",
-  "sourceRoot": "apps/proyecto-genshin/src",
+  "sourceRoot": "apps/proyecto-genshin-desktop/src",
   "tags": [],
   "targets": {
     "build": {
@@ -13,23 +13,18 @@
       ],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/apps/proyecto-genshin",
-        "browser": "apps/proyecto-genshin/src/main.ts",
-        "tsConfig": "apps/proyecto-genshin/tsconfig.app.json",
+        "outputPath": "dist/apps/proyecto-genshin-desktop",
+        "browser": "apps/proyecto-genshin-desktop/src/main.ts",
+        "tsConfig": "apps/proyecto-genshin-desktop/tsconfig.app.json",
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/proyecto-genshin/public"
+            "input": "apps/proyecto-genshin-desktop/public"
           }
         ],
         "styles": [
-          "apps/proyecto-genshin/src/styles.css"
-        ],
-        "server": "apps/proyecto-genshin/src/main.server.ts",
-        "ssr": {
-          "entry": "apps/proyecto-genshin/src/server.ts"
-        },
-        "outputMode": "server"
+          "apps/proyecto-genshin-desktop/src/styles.css"
+        ]
       },
       "configurations": {
         "production": {
@@ -53,8 +48,8 @@
           "sourceMap": true,
           "fileReplacements": [
             {
-              "replace": "apps/proyecto-genshin/src/environments/environment.ts",
-              "with": "apps/proyecto-genshin/src/environments/environment.development.ts"
+              "replace": "apps/proyecto-genshin-desktop/src/environments/environment.ts",
+              "with": "apps/proyecto-genshin-desktop/src/environments/environment.development.ts"
             }
           ]
         }
@@ -66,10 +61,10 @@
       "defaultConfiguration": "development",
       "configurations": {
         "production": {
-          "buildTarget": "proyecto-genshin:build:production"
+          "buildTarget": "proyecto-genshin-desktop:build:production"
         },
         "development": {
-          "buildTarget": "proyecto-genshin:build:development"
+          "buildTarget": "proyecto-genshin-desktop:build:development"
         }
       }
     },
@@ -86,9 +81,9 @@
       "continuous": true,
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "proyecto-genshin:build",
+        "buildTarget": "proyecto-genshin-desktop:build",
         "port": 4200,
-        "staticFilePath": "dist/apps/proyecto-genshin/browser",
+        "staticFilePath": "dist/apps/proyecto-genshin-desktop/browser",
         "spa": true
       }
     }

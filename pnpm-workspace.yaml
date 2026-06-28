@@ -1,0 +1,8 @@
+allowBuilds:
+  '@parcel/watcher': false
+  esbuild: true
+  less: false
+  lmdb: false
+  msgpackr-extract: false
+  nx: true
+  unrs-resolver: set this to true or false

@@ -13,7 +13,13 @@
     "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "paths": {}
+    "paths": {
+      "@proyecto-genshin/global-shared": ["./libs/global-shared/src/index.ts"],
+      "@proyecto-genshin/global-features": [
+        "./libs/global-features/src/index.ts"
+      ],
+      "@proyecto-genshin/global-core": ["./libs/global-core/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
