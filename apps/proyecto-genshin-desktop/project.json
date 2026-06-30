@@ -6,11 +6,27 @@
   "sourceRoot": "apps/proyecto-genshin-desktop/src",
   "tags": [],
   "targets": {
+    "tauri": {
+      "executor": "nx:run-commands",
+      "defaultConfiguration": "development",
+      "configurations": {
+        "development": {
+          "command": "tauri dev --config src-tauri/tauri.development.conf.json",
+          "cwd": "apps/proyecto-genshin-desktop"
+        },
+        "qa": {
+          "command": "tauri dev --config src-tauri/tauri.qa.conf.json",
+          "cwd": "apps/proyecto-genshin-desktop"
+        },
+        "production": {
+          "command": "tauri build",
+          "cwd": "apps/proyecto-genshin-desktop"
+        }
+      }
+    },
     "build": {
       "executor": "@angular/build:application",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/apps/proyecto-genshin-desktop",
@@ -22,9 +38,7 @@
             "input": "apps/proyecto-genshin-desktop/public"
           }
         ],
-        "styles": [
-          "apps/proyecto-genshin-desktop/src/styles.css"
-        ]
+        "styles": ["apps/proyecto-genshin-desktop/src/styles.css"]
       },
       "configurations": {
         "production": {
@@ -41,6 +55,17 @@
             }
           ],
           "outputHashing": "all"
+        },
+        "qa": {
+          "optimization": true,
+          "extractLicenses": true,
+          "sourceMap": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/proyecto-genshin-desktop/src/environments/environment.ts",
+              "with": "apps/proyecto-genshin-desktop/src/environments/environment.qa.ts"
+            }
+          ]
         },
         "development": {
           "optimization": false,
@@ -62,6 +87,9 @@
       "configurations": {
         "production": {
           "buildTarget": "proyecto-genshin-desktop:build:production"
+        },
+        "qa": {
+          "buildTarget": "proyecto-genshin-desktop:build:qa"
         },
         "development": {
           "buildTarget": "proyecto-genshin-desktop:build:development"

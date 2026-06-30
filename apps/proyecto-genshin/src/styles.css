@@ -1,2 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'tailwindcss';
+@import 'tailwindcss-primeui';
+@source '../../../libs';
+
+/* Transicion entre temas */
+::view-transition-old(root) {
+  animation: 350ms ease-out theme-fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 350ms ease-in theme-fade-in;
+}
+
+@keyframes theme-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes theme-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

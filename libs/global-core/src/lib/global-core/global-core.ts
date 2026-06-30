@@ -1,9 +1,21 @@
-import { Component } from '@angular/core';
+import { EnvironmentProviders, Provider } from '@angular/core';
+import { providePrimeNG } from 'primeng/config';
+import Aura from '@primeuix/themes/aura';
 
-@Component({
-  selector: 'lib-global-core',
-  imports: [],
-  templateUrl: './global-core.html',
-  styleUrl: './global-core.css',
-})
-export class GlobalCore {}
+export function provideGlobalCore(): (Provider | EnvironmentProviders)[] {
+  return [
+    providePrimeNG({
+      ripple: true,
+      theme: {
+        preset: Aura,
+        options: {
+          darkModeSelector: '.dark',
+          cssLayer: {
+            name: 'primeng',
+            order: 'theme, base, primeng',
+          },
+        },
+      },
+    }),
+  ];
+}
